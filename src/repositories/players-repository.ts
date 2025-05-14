@@ -94,4 +94,8 @@ export const findPlayerById = async (
     const player = database.find((d) => d.id === id);
 
     return player;
-}
+};
+
+export const insertPlayer = async (player: PlayerModel) => {
+    database.push(player);
+};

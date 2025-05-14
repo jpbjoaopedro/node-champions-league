@@ -1,16 +1,33 @@
 import { Request, Response } from "express";
 import * as PlayersService from "../services/players-service";
+import * as HttpResponse from "../utils/http-helper";
+
 
 export const getPlayer = async (req: Request, res: Response) => {
-    const data = await PlayersService.getPlayerService();
+    const httpResponse = await PlayersService.getPlayerService();
 
-    res.status(data.statusCode).json(data.body);
+    res.status(httpResponse.statusCode).json(httpResponse.body);
 }
+
 
 export const getPlayerById = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     
-    const data = await PlayersService.getPlayerByIdService(id);
+    const httpResponse = await PlayersService.getPlayerByIdService(id);
 
-    res.status(data.statusCode).json(data.body);
+    res.status(httpResponse.statusCode).json(httpResponse.body);
+}
+
+
+export const createPlayer = async (req: Request, res: Response) => {
+    const player = req.body;
+
+    const httpResponse = await PlayersService.createPlayerService(player);
+
+    if (httpResponse) {
+        res.status(httpResponse.statusCode).json(httpResponse.body);
+    } else{
+        const response = await HttpResponse.noContent();
+        res.status(response.statusCode).json(response.body)
+    }
 }
