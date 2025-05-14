@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import * as PlayersService from "../services/players-service";
 import * as HttpResponse from "../utils/http-helper";
+import { StatisticsModel } from "../models/statistics-model";
 
 
 export const getPlayer = async (req: Request, res: Response) => {
@@ -35,7 +36,16 @@ export const createPlayer = async (req: Request, res: Response) => {
 export const deletePlayer = async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
 
-    const httpResponse = await PlayersService.deletePlayerService(id);
+    const httpResponse = await PlayersService.deletePlayerByIdService(id);
+
+    res.status(httpResponse.statusCode).json(httpResponse.body);
+};
+
+export const updateStatisticsPlayer = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    const playerUpdate: StatisticsModel = req.body;
+
+    const httpResponse = await PlayersService.updateStatisticsPlayerByIdService(id, playerUpdate);
 
     res.status(httpResponse.statusCode).json(httpResponse.body);
 };

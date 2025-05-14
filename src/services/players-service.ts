@@ -1,12 +1,12 @@
-import { log } from "node:console";
 import { PlayerModel } from "../models/player-model";
 import * as PlayerRepository from "../repositories/players-repository";
 import * as HttpResponse from "../utils/http-helper";
+import { StatisticsModel } from "../models/statistics-model";
 
 export const getPlayerService = async () => {
     const data = await PlayerRepository.findAllPlayers();
 
-    const response = data ? await HttpResponse.ok(data) : HttpResponse.noContent();
+    const response = data ? await HttpResponse.ok(data) : await HttpResponse.noContent();
     
     return response;
 };
@@ -14,7 +14,7 @@ export const getPlayerService = async () => {
 export const getPlayerByIdService = async (playerId: number) => {
     const data = await PlayerRepository.findPlayerById(playerId);
 
-    const response = data ? await HttpResponse.ok(data) : HttpResponse.noContent();
+    const response = data ? await HttpResponse.ok(data) : await HttpResponse.noContent();
     
     return response;
 };
@@ -24,23 +24,29 @@ export const createPlayerService = async (player: PlayerModel) => {
 
     if (Object.keys(player).length !== 0) {
         await PlayerRepository.insertPlayer(player)
-        response = HttpResponse.created();
+        response = await HttpResponse.created();
     } else {
-        HttpResponse.badRequest();
+        await HttpResponse.badRequest();
     }
 
     return response;
 }; 
 
-export const deletePlayerService = async (playerId: number) => {
+export const deletePlayerByIdService = async (playerId: number) => {
     let response = null;
 
     if (playerId) {
         await PlayerRepository.deletePlayerById(playerId);
-        response = HttpResponse.ok({ message: "deleted" });
+        response = await HttpResponse.ok({ message: "deleted" });
     } else {
-        response = HttpResponse.badRequest();
+        response = await HttpResponse.badRequest();
     }
 
+    return response;
+};
+
+export const updateStatisticsPlayerByIdService = async (id: number, statistics: StatisticsModel) => {
+    const data = await PlayerRepository.updateStatisticsPlayerById(id, statistics);
+    const response = await HttpResponse.ok(data)
     return response;
 };
