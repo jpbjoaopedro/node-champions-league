@@ -30,4 +30,12 @@ export const createPlayer = async (req: Request, res: Response) => {
         const response = await HttpResponse.noContent();
         res.status(response.statusCode).json(response.body)
     }
-}
+};
+
+export const deletePlayer = async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+
+    const httpResponse = await PlayersService.deletePlayerService(id);
+
+    res.status(httpResponse.statusCode).json(httpResponse.body);
+};

@@ -31,3 +31,16 @@ export const createPlayerService = async (player: PlayerModel) => {
 
     return response;
 }; 
+
+export const deletePlayerService = async (playerId: number) => {
+    let response = null;
+
+    if (playerId) {
+        await PlayerRepository.deletePlayerById(playerId);
+        response = HttpResponse.ok({ message: "deleted" });
+    } else {
+        response = HttpResponse.badRequest();
+    }
+
+    return response;
+};

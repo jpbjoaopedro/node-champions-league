@@ -8,4 +8,6 @@ router.get("/players/:id", PlayerController.getPlayerById)
 
 router.post("/players", PlayerController.createPlayer)
 
+router.delete("/players/:id", PlayerController.deletePlayer)
+
 export default router;
