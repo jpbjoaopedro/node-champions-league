@@ -68,7 +68,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "get api/clubs/list"
+									"text": "get api/clubs"
 								}
 							]
 						}
@@ -82,9 +82,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 2080.4365740629046,
-			"y": 221.3196424726444,
-			"lastActivityTimestamp": 1747243117868,
+			"x": 1280.3630878953127,
+			"y": 739.3494436877077,
+			"lastActivityTimestamp": 1747316992385,
 			"meta": {}
 		},
 		{
@@ -388,9 +388,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -531.8374776617899,
-			"y": 221.36391069939563,
-			"z": 0.630247042161,
+			"x": 1247.9403186388217,
+			"y": 275.8393046338378,
+			"z": 0.41371616922902643,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -619,12 +619,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:ui0qrtUuUNOMy2HMmntf8",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:zBFjyCIsPw7zG5GdGrx4x"
+				"shape:ui0qrtUuUNOMy2HMmntf8"
 			],
-			"hoveredShapeId": "shape:zBFjyCIsPw7zG5GdGrx4x",
+			"hoveredShapeId": "shape:3oJm4_TyIgDmFMCgNEUwX",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -1420,16 +1420,11 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:fill": "solid",
-				"tldraw:dash": "draw",
-				"tldraw:geo": "rectangle",
-				"tldraw:color": "light-blue"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "ns-resize",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
