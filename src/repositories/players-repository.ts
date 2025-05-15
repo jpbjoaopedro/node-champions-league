@@ -105,8 +105,11 @@ export const deletePlayerById = async (playerId: number) => {
     const playerIndex = database.findIndex((player) => player.id === playerId);
     
     if (playerIndex !== -1) {
-        database.splice(playerIndex, 1)
+        database.splice(playerIndex, 1);
+        return true;
     }
+
+    return false;
 };
 
 export const updateStatisticsPlayerById = async (playerId: number, playerStatistics: StatisticsModel): Promise<PlayerModel> => {
